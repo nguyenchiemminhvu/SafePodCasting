@@ -25,23 +25,16 @@ SOFTWARE.
 #ifndef SAFE_CONVERTER_H
 #define SAFE_CONVERTER_H
 
-#include <algorithm>
 #include <cstdint>
+#include <cfloat>
 #include <limits>
 #include <type_traits>
 #include <cmath>
-
-template <typename T>
-T CLAMP_VALUE(const T value, const T min, const T max)
-{
-    return (value < min) ? min : ((value > max) ? max : value);
-}
 
 class SafeCaster
 {
 public:
     // bool conversions
-    static bool boolToBool(bool value);
     static int8_t boolToInt8(bool value);
     static int16_t boolToInt16(bool value);
     static int32_t boolToInt32(bool value);
@@ -55,7 +48,6 @@ public:
 
     // int8_t conversions
     static bool int8ToBool(int8_t value);
-    static int8_t int8ToInt8(int8_t value);
     static int16_t int8ToInt16(int8_t value);
     static int32_t int8ToInt32(int8_t value);
     static int64_t int8ToInt64(int8_t value);
@@ -69,7 +61,6 @@ public:
     // int16_t conversions
     static bool int16ToBool(int16_t value);
     static int8_t int16ToInt8(int16_t value);
-    static int16_t int16ToInt16(int16_t value);
     static int32_t int16ToInt32(int16_t value);
     static int64_t int16ToInt64(int16_t value);
     static uint8_t int16ToUint8(int16_t value);
@@ -83,7 +74,6 @@ public:
     static bool int32ToBool(int32_t value);
     static int8_t int32ToInt8(int32_t value);
     static int16_t int32ToInt16(int32_t value);
-    static int32_t int32ToInt32(int32_t value);
     static int64_t int32ToInt64(int32_t value);
     static uint8_t int32ToUint8(int32_t value);
     static uint16_t int32ToUint16(int32_t value);
@@ -97,7 +87,6 @@ public:
     static int8_t int64ToInt8(int64_t value);
     static int16_t int64ToInt16(int64_t value);
     static int32_t int64ToInt32(int64_t value);
-    static int64_t int64ToInt64(int64_t value);
     static uint8_t int64ToUint8(int64_t value);
     static uint16_t int64ToUint16(int64_t value);
     static uint32_t int64ToUint32(int64_t value);
@@ -111,7 +100,6 @@ public:
     static int16_t uint8ToInt16(uint8_t value);
     static int32_t uint8ToInt32(uint8_t value);
     static int64_t uint8ToInt64(uint8_t value);
-    static uint8_t uint8ToUint8(uint8_t value);
     static uint16_t uint8ToUint16(uint8_t value);
     static uint32_t uint8ToUint32(uint8_t value);
     static uint64_t uint8ToUint64(uint8_t value);
@@ -125,7 +113,6 @@ public:
     static int32_t uint16ToInt32(uint16_t value);
     static int64_t uint16ToInt64(uint16_t value);
     static uint8_t uint16ToUint8(uint16_t value);
-    static uint16_t uint16ToUint16(uint16_t value);
     static uint32_t uint16ToUint32(uint16_t value);
     static uint64_t uint16ToUint64(uint16_t value);
     static float uint16ToFloat(uint16_t value);
@@ -139,7 +126,6 @@ public:
     static int64_t uint32ToInt64(uint32_t value);
     static uint8_t uint32ToUint8(uint32_t value);
     static uint16_t uint32ToUint16(uint32_t value);
-    static uint32_t uint32ToUint32(uint32_t value);
     static uint64_t uint32ToUint64(uint32_t value);
     static float uint32ToFloat(uint32_t value);
     static double uint32ToDouble(uint32_t value);
@@ -153,7 +139,6 @@ public:
     static uint8_t uint64ToUint8(uint64_t value);
     static uint16_t uint64ToUint16(uint64_t value);
     static uint32_t uint64ToUint32(uint64_t value);
-    static uint64_t uint64ToUint64(uint64_t value);
     static float uint64ToFloat(uint64_t value);
     static double uint64ToDouble(uint64_t value);
 
@@ -167,7 +152,6 @@ public:
     static uint16_t floatToUint16(float value);
     static uint32_t floatToUint32(float value);
     static uint64_t floatToUint64(float value);
-    static float floatToFloat(float value);
     static double floatToDouble(float value);
 
     // double conversions
@@ -181,13 +165,20 @@ public:
     static uint32_t doubleToUint32(double value);
     static uint64_t doubleToUint64(double value);
     static float doubleToFloat(double value);
-    static double doubleToDouble(double value);
 };
 
-template<typename SourceType, typename TargetType>
-TargetType SAFE_CONVERT(SourceType value)
+template <typename From, typename To>
+To SAFE_CONVERT(From value)
 {
-    return static_cast<TargetType>(value);
+    if (value < static_cast<From>(std::numeric_limits<To>::min()))
+    {
+        return std::numeric_limits<To>::min();
+    }
+    if (value > static_cast<From>(std::numeric_limits<To>::max()))
+    {
+        return std::numeric_limits<To>::max();
+    }
+    return static_cast<To>(value);
 }
 
 #endif // SAFE_CONVERTER_H

@@ -5,11 +5,6 @@
 #endif
 
 // bool conversions
-bool SafeCaster::boolToBool(bool value)
-{
-    return value;
-}
-
 int8_t SafeCaster::boolToInt8(bool value)
 {
     return value ? 1 : 0;
@@ -66,11 +61,6 @@ bool SafeCaster::int8ToBool(int8_t value)
     return value != 0;
 }
 
-int8_t SafeCaster::int8ToInt8(int8_t value)
-{
-    return value;
-}
-
 int16_t SafeCaster::int8ToInt16(int8_t value)
 {
     return static_cast<int16_t>(value);
@@ -88,25 +78,37 @@ int64_t SafeCaster::int8ToInt64(int8_t value)
 
 uint8_t SafeCaster::int8ToUint8(int8_t value)
 {
-    value = CLAMP_VALUE<int8_t>(value, static_cast<int8_t>(0), static_cast<int8_t>(INT8_MAX));
+    if (value < 0)
+    {
+        return 0U;
+    }
     return static_cast<uint8_t>(value);
 }
 
 uint16_t SafeCaster::int8ToUint16(int8_t value)
 {
-    value = CLAMP_VALUE<int8_t>(value, static_cast<int8_t>(0), static_cast<int8_t>(INT8_MAX));
+    if (value < 0)
+    {
+        return 0U;
+    }
     return static_cast<uint16_t>(value);
 }
 
 uint32_t SafeCaster::int8ToUint32(int8_t value)
 {
-    value = CLAMP_VALUE<int8_t>(value, static_cast<int8_t>(0), static_cast<int8_t>(INT8_MAX));
+    if (value < 0)
+    {
+        return 0U;
+    }
     return static_cast<uint32_t>(value);
 }
 
 uint64_t SafeCaster::int8ToUint64(int8_t value)
 {
-    value = CLAMP_VALUE<int8_t>(value, static_cast<int8_t>(0), static_cast<int8_t>(INT8_MAX));
+    if (value < 0)
+    {
+        return 0U;
+    }
     return static_cast<uint64_t>(value);
 }
 
@@ -128,13 +130,15 @@ bool SafeCaster::int16ToBool(int16_t value)
 
 int8_t SafeCaster::int16ToInt8(int16_t value)
 {
-    value = CLAMP_VALUE<int16_t>(value, static_cast<int16_t>(INT8_MIN), static_cast<int16_t>(INT8_MAX));
+    if (value < INT8_MIN)
+    {
+        return INT8_MIN;
+    }
+    else if (value > INT8_MAX)
+    {
+        return INT8_MAX;
+    }
     return static_cast<int8_t>(value);
-}
-
-int16_t SafeCaster::int16ToInt16(int16_t value)
-{
-    return value;
 }
 
 int32_t SafeCaster::int16ToInt32(int16_t value)
@@ -149,25 +153,41 @@ int64_t SafeCaster::int16ToInt64(int16_t value)
 
 uint8_t SafeCaster::int16ToUint8(int16_t value)
 {
-    value = CLAMP_VALUE<int16_t>(value, static_cast<int16_t>(0), static_cast<int16_t>(UINT8_MAX));
+    if (value < 0)
+    {
+        return 0U;
+    }
+    else if (value > UINT8_MAX)
+    {
+        return UINT8_MAX;
+    }
     return static_cast<uint8_t>(value);
 }
 
 uint16_t SafeCaster::int16ToUint16(int16_t value)
 {
-    value = CLAMP_VALUE<int16_t>(value, static_cast<int16_t>(0), static_cast<int16_t>(INT16_MAX));
+    if (value < 0)
+    {
+        return 0U;
+    }
     return static_cast<uint16_t>(value);
 }
 
 uint32_t SafeCaster::int16ToUint32(int16_t value)
 {
-    value = CLAMP_VALUE<int16_t>(value, static_cast<int16_t>(0), static_cast<int16_t>(INT16_MAX));
+    if (value < 0)
+    {
+        return 0U;
+    }
     return static_cast<uint32_t>(value);
 }
 
 uint64_t SafeCaster::int16ToUint64(int16_t value)
 {
-    value = CLAMP_VALUE<int16_t>(value, static_cast<int16_t>(0), static_cast<int16_t>(INT16_MAX));
+    if (value < 0)
+    {
+        return 0U;
+    }
     return static_cast<uint64_t>(value);
 }
 
@@ -189,19 +209,28 @@ bool SafeCaster::int32ToBool(int32_t value)
 
 int8_t SafeCaster::int32ToInt8(int32_t value)
 {
-    value = CLAMP_VALUE<int32_t>(value, static_cast<int32_t>(INT8_MIN), static_cast<int32_t>(INT8_MAX));
+    if (value < INT8_MIN)
+    {
+        return INT8_MIN;
+    }
+    else if (value > INT8_MAX)
+    {
+        return INT8_MAX;
+    }
     return static_cast<int8_t>(value);
 }
 
 int16_t SafeCaster::int32ToInt16(int32_t value)
 {
-    value = CLAMP_VALUE<int32_t>(value, static_cast<int32_t>(INT16_MIN), static_cast<int32_t>(INT16_MAX));
+    if (value < INT16_MIN)
+    {
+        return INT16_MIN;
+    }
+    else if (value > INT16_MAX)
+    {
+        return INT16_MAX;
+    }
     return static_cast<int16_t>(value);
-}
-
-int32_t SafeCaster::int32ToInt32(int32_t value)
-{
-    return value;
 }
 
 int64_t SafeCaster::int32ToInt64(int32_t value)
@@ -211,25 +240,45 @@ int64_t SafeCaster::int32ToInt64(int32_t value)
 
 uint8_t SafeCaster::int32ToUint8(int32_t value)
 {
-    value = CLAMP_VALUE<int32_t>(value, static_cast<int32_t>(0), static_cast<int32_t>(UINT8_MAX));
+    if (value < 0)
+    {
+        return 0U;
+    }
+    else if (value > UINT8_MAX)
+    {
+        return UINT8_MAX;
+    }
     return static_cast<uint8_t>(value);
 }
 
 uint16_t SafeCaster::int32ToUint16(int32_t value)
 {
-    value = CLAMP_VALUE<int32_t>(value, static_cast<int32_t>(0), static_cast<int32_t>(UINT16_MAX));
+    if (value < 0)
+    {
+        return 0U;
+    }
+    else if (value > UINT16_MAX)
+    {
+        return UINT16_MAX;
+    }
     return static_cast<uint16_t>(value);
 }
 
 uint32_t SafeCaster::int32ToUint32(int32_t value)
 {
-    value = CLAMP_VALUE<int32_t>(value, static_cast<int32_t>(0), static_cast<int32_t>(INT32_MAX));
+    if (value < 0)
+    {
+        return 0U;
+    }
     return static_cast<uint32_t>(value);
 }
 
 uint64_t SafeCaster::int32ToUint64(int32_t value)
 {
-    value = CLAMP_VALUE<int32_t>(value, static_cast<int32_t>(0), static_cast<int32_t>(INT32_MAX));
+    if (value < 0)
+    {
+        return 0U;
+    }
     return static_cast<uint64_t>(value);
 }
 
@@ -251,53 +300,101 @@ bool SafeCaster::int64ToBool(int64_t value)
 
 int8_t SafeCaster::int64ToInt8(int64_t value)
 {
-    value = CLAMP_VALUE<int64_t>(value, static_cast<int64_t>(INT8_MIN), static_cast<int64_t>(INT8_MAX));
+    if (value < INT8_MIN)
+    {
+        return INT8_MIN;
+    }
+    else if (value > INT8_MAX)
+    {
+        return INT8_MAX;
+    }
     return static_cast<int8_t>(value);
 }
 
 int16_t SafeCaster::int64ToInt16(int64_t value)
 {
-    value = CLAMP_VALUE<int64_t>(value, static_cast<int64_t>(INT16_MIN), static_cast<int64_t>(INT16_MAX));
+    if (value < INT16_MIN)
+    {
+        return INT16_MIN;
+    }
+    else if (value > INT16_MAX)
+    {
+        return INT16_MAX;
+    }
     return static_cast<int16_t>(value);
 }
 
 int32_t SafeCaster::int64ToInt32(int64_t value)
 {
-    value = CLAMP_VALUE<int64_t>(value, static_cast<int64_t>(INT32_MIN), static_cast<int64_t>(INT32_MAX));
+    if (value < INT32_MIN)
+    {
+        return INT32_MIN;
+    }
+    else if (value > INT32_MAX)
+    {
+        return INT32_MAX;
+    }
     return static_cast<int32_t>(value);
-}
-
-int64_t SafeCaster::int64ToInt64(int64_t value)
-{
-    return value;
 }
 
 uint8_t SafeCaster::int64ToUint8(int64_t value)
 {
-    value = CLAMP_VALUE<int64_t>(value, static_cast<int64_t>(0), static_cast<int64_t>(UINT8_MAX));
+    if (value < 0)
+    {
+        return 0U;
+    }
+    else if (value > UINT8_MAX)
+    {
+        return UINT8_MAX;
+    }
     return static_cast<uint8_t>(value);
 }
 
 uint16_t SafeCaster::int64ToUint16(int64_t value)
 {
-    value = CLAMP_VALUE<int64_t>(value, static_cast<int64_t>(0), static_cast<int64_t>(UINT16_MAX));
+    if (value < 0)
+    {
+        return 0U;
+    }
+    else if (value > UINT16_MAX)
+    {
+        return UINT16_MAX;
+    }
     return static_cast<uint16_t>(value);
 }
 
 uint32_t SafeCaster::int64ToUint32(int64_t value)
 {
-    value = CLAMP_VALUE<int64_t>(value, static_cast<int64_t>(0), static_cast<int64_t>(UINT32_MAX));
+    if (value < 0)
+    {
+        return 0U;
+    }
+    else if (value > UINT32_MAX)
+    {
+        return UINT32_MAX;
+    }
     return static_cast<uint32_t>(value);
 }
 
 uint64_t SafeCaster::int64ToUint64(int64_t value)
 {
-    value = CLAMP_VALUE<int64_t>(value, static_cast<int64_t>(0), static_cast<int64_t>(INT64_MAX));
+    if (value < 0)
+    {
+        return 0U;
+    }
     return static_cast<uint64_t>(value);
 }
 
 float SafeCaster::int64ToFloat(int64_t value)
 {
+    if (value < -FLT_MAX)
+    {
+        return -FLT_MAX;
+    }
+    else if (value > FLT_MAX)
+    {
+        return FLT_MAX;
+    }
     return static_cast<float>(value);
 }
 
@@ -314,7 +411,10 @@ bool SafeCaster::uint8ToBool(uint8_t value)
 
 int8_t SafeCaster::uint8ToInt8(uint8_t value)
 {
-    value = CLAMP_VALUE<uint8_t>(value, static_cast<uint8_t>(0U), static_cast<uint8_t>(INT8_MAX));
+    if (value > INT8_MAX)
+    {
+        return INT8_MAX;
+    }
     return static_cast<int8_t>(value);
 }
 
@@ -331,11 +431,6 @@ int32_t SafeCaster::uint8ToInt32(uint8_t value)
 int64_t SafeCaster::uint8ToInt64(uint8_t value)
 {
     return static_cast<int64_t>(value);
-}
-
-uint8_t SafeCaster::uint8ToUint8(uint8_t value)
-{
-    return value;
 }
 
 uint16_t SafeCaster::uint8ToUint16(uint8_t value)
@@ -371,13 +466,19 @@ bool SafeCaster::uint16ToBool(uint16_t value)
 
 int8_t SafeCaster::uint16ToInt8(uint16_t value)
 {
-    value = CLAMP_VALUE<uint16_t>(value, static_cast<uint16_t>(0U), static_cast<uint16_t>(INT8_MAX));
+    if (value > INT8_MAX)
+    {
+        return INT8_MAX;
+    }
     return static_cast<int8_t>(value);
 }
 
 int16_t SafeCaster::uint16ToInt16(uint16_t value)
 {
-    value = CLAMP_VALUE<uint16_t>(value, static_cast<uint16_t>(0U), static_cast<uint16_t>(INT16_MAX));
+    if (value > INT16_MAX)
+    {
+        return INT16_MAX;
+    }
     return static_cast<int16_t>(value);
 }
 
@@ -393,13 +494,11 @@ int64_t SafeCaster::uint16ToInt64(uint16_t value)
 
 uint8_t SafeCaster::uint16ToUint8(uint16_t value)
 {
-    value = CLAMP_VALUE<uint16_t>(value, static_cast<uint16_t>(0U), static_cast<uint16_t>(UINT8_MAX));
+    if (value > UINT8_MAX)
+    {
+        return UINT8_MAX;
+    }
     return static_cast<uint8_t>(value);
-}
-
-uint16_t SafeCaster::uint16ToUint16(uint16_t value)
-{
-    return value;
 }
 
 uint32_t SafeCaster::uint16ToUint32(uint16_t value)
@@ -430,19 +529,28 @@ bool SafeCaster::uint32ToBool(uint32_t value)
 
 int8_t SafeCaster::uint32ToInt8(uint32_t value)
 {
-    value = CLAMP_VALUE<uint32_t>(value, static_cast<uint32_t>(0U), static_cast<uint32_t>(INT8_MAX));
+    if (value > INT8_MAX)
+    {
+        return INT8_MAX;
+    }
     return static_cast<int8_t>(value);
 }
 
 int16_t SafeCaster::uint32ToInt16(uint32_t value)
 {
-    value = CLAMP_VALUE<uint32_t>(value, static_cast<uint32_t>(0U), static_cast<uint32_t>(INT16_MAX));
+    if (value > INT16_MAX)
+    {
+        return INT16_MAX;
+    }
     return static_cast<int16_t>(value);
 }
 
 int32_t SafeCaster::uint32ToInt32(uint32_t value)
 {
-    value = CLAMP_VALUE<uint32_t>(value, static_cast<uint32_t>(0U), static_cast<uint32_t>(INT32_MAX));
+    if (value > INT32_MAX)
+    {
+        return INT32_MAX;
+    }
     return static_cast<int32_t>(value);
 }
 
@@ -453,19 +561,20 @@ int64_t SafeCaster::uint32ToInt64(uint32_t value)
 
 uint8_t SafeCaster::uint32ToUint8(uint32_t value)
 {
-    value = CLAMP_VALUE<uint32_t>(value, static_cast<uint32_t>(0U), static_cast<uint32_t>(UINT8_MAX));
+    if (value > UINT8_MAX)
+    {
+        return UINT8_MAX;
+    }
     return static_cast<uint8_t>(value);
 }
 
 uint16_t SafeCaster::uint32ToUint16(uint32_t value)
 {
-    value = CLAMP_VALUE<uint32_t>(value, static_cast<uint32_t>(0U), static_cast<uint32_t>(UINT16_MAX));
+    if (value > UINT16_MAX)
+    {
+        return UINT16_MAX;
+    }
     return static_cast<uint16_t>(value);
-}
-
-uint32_t SafeCaster::uint32ToUint32(uint32_t value)
-{
-    return value;
 }
 
 uint64_t SafeCaster::uint32ToUint64(uint32_t value)
@@ -491,49 +600,65 @@ bool SafeCaster::uint64ToBool(uint64_t value)
 
 int8_t SafeCaster::uint64ToInt8(uint64_t value)
 {
-    value = CLAMP_VALUE<uint64_t>(value, static_cast<uint64_t>(0U), static_cast<uint64_t>(INT8_MAX));
+    if (value > INT8_MAX)
+    {
+        return INT8_MAX;
+    }
     return static_cast<int8_t>(value);
 }
 
 int16_t SafeCaster::uint64ToInt16(uint64_t value)
 {
-    value = CLAMP_VALUE<uint64_t>(value, static_cast<uint64_t>(0U), static_cast<uint64_t>(INT16_MAX));
+    if (value > INT16_MAX)
+    {
+        return INT16_MAX;
+    }
     return static_cast<int16_t>(value);
 }
 
 int32_t SafeCaster::uint64ToInt32(uint64_t value)
 {
-    value = CLAMP_VALUE<uint64_t>(value, static_cast<uint64_t>(0U), static_cast<uint64_t>(INT32_MAX));
+    if (value > INT32_MAX)
+    {
+        return INT32_MAX;
+    }
     return static_cast<int32_t>(value);
 }
 
 int64_t SafeCaster::uint64ToInt64(uint64_t value)
 {
-    value = CLAMP_VALUE<uint64_t>(value, static_cast<uint64_t>(0U), static_cast<uint64_t>(INT64_MAX));
+    if (value > INT64_MAX)
+    {
+        return INT64_MAX;
+    }
     return static_cast<int64_t>(value);
 }
 
 uint8_t SafeCaster::uint64ToUint8(uint64_t value)
 {
-    value = CLAMP_VALUE<uint64_t>(value, static_cast<uint64_t>(0U), static_cast<uint64_t>(UINT8_MAX));
+    if (value > UINT8_MAX)
+    {
+        return UINT8_MAX;
+    }
     return static_cast<uint8_t>(value);
 }
 
 uint16_t SafeCaster::uint64ToUint16(uint64_t value)
 {
-    value = CLAMP_VALUE<uint64_t>(value, static_cast<uint64_t>(0U), static_cast<uint64_t>(UINT16_MAX));
+    if (value > UINT16_MAX)
+    {
+        return UINT16_MAX;
+    }
     return static_cast<uint16_t>(value);
 }
 
 uint32_t SafeCaster::uint64ToUint32(uint64_t value)
 {
-    value = CLAMP_VALUE<uint64_t>(value, static_cast<uint64_t>(0U), static_cast<uint64_t>(UINT32_MAX));
+    if (value > UINT32_MAX)
+    {
+        return UINT32_MAX;
+    }
     return static_cast<uint32_t>(value);
-}
-
-uint64_t SafeCaster::uint64ToUint64(uint64_t value)
-{
-    return value;
 }
 
 float SafeCaster::uint64ToFloat(uint64_t value)
@@ -554,55 +679,106 @@ bool SafeCaster::floatToBool(float value)
 
 int8_t SafeCaster::floatToInt8(float value)
 {
-    value = CLAMP_VALUE<float>(value, static_cast<float>(INT8_MIN), static_cast<float>(INT8_MAX));
+    if (static_cast<double>(value) <= static_cast<double>(INT8_MIN))
+    {
+        return INT8_MIN;
+    }
+    else if (static_cast<double>(value) >= static_cast<double>(INT8_MAX))
+    {
+        return INT8_MAX;
+    }
     return static_cast<int8_t>(value);
 }
 
 int16_t SafeCaster::floatToInt16(float value)
 {
-    value = CLAMP_VALUE<float>(value, static_cast<float>(INT16_MIN), static_cast<float>(INT16_MAX));
+    if (static_cast<double>(value) <= static_cast<double>(INT16_MIN))
+    {
+        return INT16_MIN;
+    }
+    else if (static_cast<double>(value) >= static_cast<double>(INT16_MAX))
+    {
+        return INT16_MAX;
+    }
     return static_cast<int16_t>(value);
 }
 
 int32_t SafeCaster::floatToInt32(float value)
 {
-    value = CLAMP_VALUE<float>(value, static_cast<float>(INT32_MIN), static_cast<float>(INT32_MAX));
+    if (static_cast<double>(value) <= static_cast<double>(INT32_MIN))
+    {
+        return INT32_MIN;
+    }
+    else if (static_cast<double>(value) >= static_cast<double>(INT32_MAX))
+    {
+        return INT32_MAX;
+    }
     return static_cast<int32_t>(value);
 }
 
 int64_t SafeCaster::floatToInt64(float value)
 {
-    value = CLAMP_VALUE<float>(value, static_cast<float>(INT64_MIN), static_cast<float>(INT64_MAX));
+    if ((double)value <= static_cast<double>(INT64_MIN))
+    {
+        return INT64_MIN;
+    }
+    else if ((double)value >= static_cast<double>(INT64_MAX))
+    {
+        return INT64_MAX;
+    }
     return static_cast<int64_t>(value);
 }
 
 uint8_t SafeCaster::floatToUint8(float value)
 {
-    value = CLAMP_VALUE<float>(value, static_cast<float>(0.0f), static_cast<float>(UINT8_MAX));
+    if (static_cast<double>(value) <= 0.0)
+    {
+        return 0U;
+    }
+    else if (static_cast<double>(value) >= static_cast<double>(UINT8_MAX))
+    {
+        return UINT8_MAX;
+    }
     return static_cast<uint8_t>(value);
 }
 
 uint16_t SafeCaster::floatToUint16(float value)
 {
-    value = CLAMP_VALUE<float>(value, static_cast<float>(0.0f), static_cast<float>(UINT16_MAX));
+    if (static_cast<double>(value) <= 0.0)
+    {
+        return 0U;
+    }
+    else if (static_cast<double>(value) >= static_cast<double>(UINT16_MAX))
+    {
+        return UINT16_MAX;
+    }
     return static_cast<uint16_t>(value);
 }
 
 uint32_t SafeCaster::floatToUint32(float value)
 {
-    value = CLAMP_VALUE<float>(value, static_cast<float>(0.0f), static_cast<float>(UINT32_MAX));
+    if (static_cast<double>(value) <= 0.0)
+    {
+        return 0U;
+    }
+    else if (static_cast<double>(value) >= static_cast<double>(UINT32_MAX))
+    {
+        return UINT32_MAX;
+    }
     return static_cast<uint32_t>(value);
 }
 
 uint64_t SafeCaster::floatToUint64(float value)
 {
-    value = CLAMP_VALUE<float>(value, static_cast<float>(0.0f), static_cast<float>(UINT64_MAX));
+    if (static_cast<double>(value) <= 0.0)
+    {
+        return 0U;
+    }
+    else if (static_cast<double>(value) >= static_cast<double>(UINT64_MAX))
+    {
+        return UINT64_MAX;
+    }
     return static_cast<uint64_t>(value);
-}
-
-float SafeCaster::floatToFloat(float value)
-{
-    return value;
 }
 
 double SafeCaster::floatToDouble(float value)
@@ -618,68 +794,119 @@ bool SafeCaster::doubleToBool(double value)
 
 int8_t SafeCaster::doubleToInt8(double value)
 {
-    value = CLAMP_VALUE<double>(value, static_cast<double>(INT8_MIN), static_cast<double>(INT8_MAX));
+    if (value <= static_cast<double>(INT8_MIN))
+    {
+        return INT8_MIN;
+    }
+    else if (value >= static_cast<double>(INT8_MAX))
+    {
+        return INT8_MAX;
+    }
     return static_cast<int8_t>(value);
 }
 
 int16_t SafeCaster::doubleToInt16(double value)
 {
-    value = CLAMP_VALUE<double>(value, static_cast<double>(INT16_MIN), static_cast<double>(INT16_MAX));
+    if (value <= static_cast<double>(INT16_MIN))
+    {
+        return INT16_MIN;
+    }
+    else if (value >= static_cast<double>(INT16_MAX))
+    {
+        return INT16_MAX;
+    }
     return static_cast<int16_t>(value);
 }
 
 int32_t SafeCaster::doubleToInt32(double value)
 {
-    value = CLAMP_VALUE<double>(value, static_cast<double>(INT32_MIN), static_cast<double>(INT32_MAX));
+    if (value <= static_cast<double>(INT32_MIN))
+    {
+        return INT32_MIN;
+    }
+    else if (value >= static_cast<double>(INT32_MAX))
+    {
+        return INT32_MAX;
+    }
     return static_cast<int32_t>(value);
 }
 
 int64_t SafeCaster::doubleToInt64(double value)
 {
-    value = CLAMP_VALUE<double>(value, static_cast<double>(INT64_MIN), static_cast<double>(INT64_MAX));
+    if (value <= static_cast<double>(INT64_MIN))
+    {
+        return INT64_MIN;
+    }
+    else if (value >= static_cast<double>(INT64_MAX))
+    {
+        return INT64_MAX;
+    }
     return static_cast<int64_t>(value);
 }
 
 uint8_t SafeCaster::doubleToUint8(double value)
 {
-    value = CLAMP_VALUE<double>(value, static_cast<double>(0.0), static_cast<double>(UINT8_MAX));
+    if (value <= 0.0)
+    {
+        return 0U;
+    }
+    else if (value >= static_cast<double>(UINT8_MAX))
+    {
+        return UINT8_MAX;
+    }
     return static_cast<uint8_t>(value);
 }
 
 uint16_t SafeCaster::doubleToUint16(double value)
 {
-    value = CLAMP_VALUE<double>(value, static_cast<double>(0.0), static_cast<double>(UINT16_MAX));
+    if (value <= 0.0)
+    {
+        return 0U;
+    }
+    else if (value >= static_cast<double>(UINT16_MAX))
+    {
+        return UINT16_MAX;
+    }
     return static_cast<uint16_t>(value);
 }
 
 uint32_t SafeCaster::doubleToUint32(double value)
 {
-    value = CLAMP_VALUE<double>(value, static_cast<double>(0.0), static_cast<double>(UINT32_MAX));
+    if (value <= 0.0)
+    {
+        return 0U;
+    }
+    else if (value >= static_cast<double>(UINT32_MAX))
+    {
+        return UINT32_MAX;
+    }
     return static_cast<uint32_t>(value);
 }
 
 uint64_t SafeCaster::doubleToUint64(double value)
 {
-    value = CLAMP_VALUE<double>(value, static_cast<double>(0.0), static_cast<double>(UINT64_MAX));
+    if (value <= 0.0)
+    {
+        return 0U;
+    }
+    else if (value >= static_cast<double>(UINT64_MAX))
+    {
+        return UINT64_MAX;
+    }
     return static_cast<uint64_t>(value);
 }
 
 float SafeCaster::doubleToFloat(double value)
 {
-    value = CLAMP_VALUE<double>(value, static_cast<double>(std::numeric_limits<float>::min()), static_cast<double>(std::numeric_limits<float>::max()));
+    if (value <= static_cast<double>(-FLT_MAX))
+    {
+        return -FLT_MAX;
+    }
+    else if (value >= static_cast<double>(FLT_MAX))
+    {
+        return FLT_MAX;
+    }
     return static_cast<float>(value);
-}
-
-double SafeCaster::doubleToDouble(double value)
-{
-    return value;
-}
-
-// bool conversions
-template<>
-bool SAFE_CONVERT<bool, bool>(bool value)
-{
-    return SafeCaster::boolToBool(value);
 }
 
 template<>
@@ -750,12 +977,6 @@ bool SAFE_CONVERT<int8_t, bool>(int8_t value)
 }
 
 template<>
-int8_t SAFE_CONVERT<int8_t, int8_t>(int8_t value)
-{
-    return SafeCaster::int8ToInt8(value);
-}
-
-template<>
 int16_t SAFE_CONVERT<int8_t, int16_t>(int8_t value)
 {
     return SafeCaster::int8ToInt16(value);
@@ -820,12 +1041,6 @@ template<>
 int8_t SAFE_CONVERT<int16_t, int8_t>(int16_t value)
 {
     return SafeCaster::int16ToInt8(value);
-}
-
-template<>
-int16_t SAFE_CONVERT<int16_t, int16_t>(int16_t value)
-{
-    return SafeCaster::int16ToInt16(value);
 }
 
 template<>
@@ -896,12 +1111,6 @@ int16_t SAFE_CONVERT<int32_t, int16_t>(int32_t value)
 }
 
 template<>
-int32_t SAFE_CONVERT<int32_t, int32_t>(int32_t value)
-{
-    return SafeCaster::int32ToInt32(value);
-}
-
-template<>
 int64_t SAFE_CONVERT<int32_t, int64_t>(int32_t value)
 {
     return SafeCaster::int32ToInt64(value);
@@ -966,12 +1175,6 @@ template<>
 int32_t SAFE_CONVERT<int64_t, int32_t>(int64_t value)
 {
     return SafeCaster::int64ToInt32(value);
-}
-
-template<>
-int64_t SAFE_CONVERT<int64_t, int64_t>(int64_t value)
-{
-    return SafeCaster::int64ToInt64(value);
 }
 
 template<>
@@ -1042,12 +1245,6 @@ int64_t SAFE_CONVERT<uint8_t, int64_t>(uint8_t value)
 }
 
 template<>
-uint8_t SAFE_CONVERT<uint8_t, uint8_t>(uint8_t value)
-{
-    return SafeCaster::uint8ToUint8(value);
-}
-
-template<>
 uint16_t SAFE_CONVERT<uint8_t, uint16_t>(uint8_t value)
 {
     return SafeCaster::uint8ToUint16(value);
@@ -1112,12 +1309,6 @@ template<>
 uint8_t SAFE_CONVERT<uint16_t, uint8_t>(uint16_t value)
 {
     return SafeCaster::uint16ToUint8(value);
-}
-
-template<>
-uint16_t SAFE_CONVERT<uint16_t, uint16_t>(uint16_t value)
-{
-    return SafeCaster::uint16ToUint16(value);
 }
 
 template<>
@@ -1188,12 +1379,6 @@ uint16_t SAFE_CONVERT<uint32_t, uint16_t>(uint32_t value)
 }
 
 template<>
-uint32_t SAFE_CONVERT<uint32_t, uint32_t>(uint32_t value)
-{
-    return SafeCaster::uint32ToUint32(value);
-}
-
-template<>
 uint64_t SAFE_CONVERT<uint32_t, uint64_t>(uint32_t value)
 {
     return SafeCaster::uint32ToUint64(value);
@@ -1258,12 +1443,6 @@ template<>
 uint32_t SAFE_CONVERT<uint64_t, uint32_t>(uint64_t value)
 {
     return SafeCaster::uint64ToUint32(value);
-}
-
-template<>
-uint64_t SAFE_CONVERT<uint64_t, uint64_t>(uint64_t value)
-{
-    return SafeCaster::uint64ToUint64(value);
 }
 
 template<>
@@ -1334,12 +1513,6 @@ uint64_t SAFE_CONVERT<float, uint64_t>(float value)
 }
 
 template<>
-float SAFE_CONVERT<float, float>(float value)
-{
-    return SafeCaster::floatToFloat(value);
-}
-
-template<>
 double SAFE_CONVERT<float, double>(float value)
 {
     return SafeCaster::floatToDouble(value);
@@ -1404,10 +1577,4 @@ template<>
 float SAFE_CONVERT<double, float>(double value)
 {
     return SafeCaster::doubleToFloat(value);
-}
-
-template<>
-double SAFE_CONVERT<double, double>(double value)
-{
-    return SafeCaster::doubleToDouble(value);
 }
