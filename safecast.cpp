@@ -908,3 +908,673 @@ float SafeCaster::doubleToFloat(double value)
     }
     return static_cast<float>(value);
 }
+
+template<>
+int8_t SAFE_CONVERT<bool, int8_t>(bool value)
+{
+    return SafeCaster::boolToInt8(value);
+}
+
+template<>
+int16_t SAFE_CONVERT<bool, int16_t>(bool value)
+{
+    return SafeCaster::boolToInt16(value);
+}
+
+template<>
+int32_t SAFE_CONVERT<bool, int32_t>(bool value)
+{
+    return SafeCaster::boolToInt32(value);
+}
+
+template<>
+int64_t SAFE_CONVERT<bool, int64_t>(bool value)
+{
+    return SafeCaster::boolToInt64(value);
+}
+
+template<>
+uint8_t SAFE_CONVERT<bool, uint8_t>(bool value)
+{
+    return SafeCaster::boolToUint8(value);
+}
+
+template<>
+uint16_t SAFE_CONVERT<bool, uint16_t>(bool value)
+{
+    return SafeCaster::boolToUint16(value);
+}
+
+template<>
+uint32_t SAFE_CONVERT<bool, uint32_t>(bool value)
+{
+    return SafeCaster::boolToUint32(value);
+}
+
+template<>
+uint64_t SAFE_CONVERT<bool, uint64_t>(bool value)
+{
+    return SafeCaster::boolToUint64(value);
+}
+
+template<>
+float SAFE_CONVERT<bool, float>(bool value)
+{
+    return SafeCaster::boolToFloat(value);
+}
+
+template<>
+double SAFE_CONVERT<bool, double>(bool value)
+{
+    return SafeCaster::boolToDouble(value);
+}
+
+// int8_t conversions
+template<>
+bool SAFE_CONVERT<int8_t, bool>(int8_t value)
+{
+    return SafeCaster::int8ToBool(value);
+}
+
+template<>
+int16_t SAFE_CONVERT<int8_t, int16_t>(int8_t value)
+{
+    return SafeCaster::int8ToInt16(value);
+}
+
+template<>
+int32_t SAFE_CONVERT<int8_t, int32_t>(int8_t value)
+{
+    return SafeCaster::int8ToInt32(value);
+}
+
+template<>
+int64_t SAFE_CONVERT<int8_t, int64_t>(int8_t value)
+{
+    return SafeCaster::int8ToInt64(value);
+}
+
+template<>
+uint8_t SAFE_CONVERT<int8_t, uint8_t>(int8_t value)
+{
+    return SafeCaster::int8ToUint8(value);
+}
+
+template<>
+uint16_t SAFE_CONVERT<int8_t, uint16_t>(int8_t value)
+{
+    return SafeCaster::int8ToUint16(value);
+}
+
+template<>
+uint32_t SAFE_CONVERT<int8_t, uint32_t>(int8_t value)
+{
+    return SafeCaster::int8ToUint32(value);
+}
+
+template<>
+uint64_t SAFE_CONVERT<int8_t, uint64_t>(int8_t value)
+{
+    return SafeCaster::int8ToUint64(value);
+}
+
+template<>
+float SAFE_CONVERT<int8_t, float>(int8_t value)
+{
+    return SafeCaster::int8ToFloat(value);
+}
+
+template<>
+double SAFE_CONVERT<int8_t, double>(int8_t value)
+{
+    return SafeCaster::int8ToDouble(value);
+}
+
+// int16_t conversions
+template<>
+bool SAFE_CONVERT<int16_t, bool>(int16_t value)
+{
+    return SafeCaster::int16ToBool(value);
+}
+
+template<>
+int8_t SAFE_CONVERT<int16_t, int8_t>(int16_t value)
+{
+    return SafeCaster::int16ToInt8(value);
+}
+
+template<>
+int32_t SAFE_CONVERT<int16_t, int32_t>(int16_t value)
+{
+    return SafeCaster::int16ToInt32(value);
+}
+
+template<>
+int64_t SAFE_CONVERT<int16_t, int64_t>(int16_t value)
+{
+    return SafeCaster::int16ToInt64(value);
+}
+
+template<>
+uint8_t SAFE_CONVERT<int16_t, uint8_t>(int16_t value)
+{
+    return SafeCaster::int16ToUint8(value);
+}
+
+template<>
+uint16_t SAFE_CONVERT<int16_t, uint16_t>(int16_t value)
+{
+    return SafeCaster::int16ToUint16(value);
+}
+
+template<>
+uint32_t SAFE_CONVERT<int16_t, uint32_t>(int16_t value)
+{
+    return SafeCaster::int16ToUint32(value);
+}
+
+template<>
+uint64_t SAFE_CONVERT<int16_t, uint64_t>(int16_t value)
+{
+    return SafeCaster::int16ToUint64(value);
+}
+
+template<>
+float SAFE_CONVERT<int16_t, float>(int16_t value)
+{
+    return SafeCaster::int16ToFloat(value);
+}
+
+template<>
+double SAFE_CONVERT<int16_t, double>(int16_t value)
+{
+    return SafeCaster::int16ToDouble(value);
+}
+
+// int32_t conversions
+template<>
+bool SAFE_CONVERT<int32_t, bool>(int32_t value)
+{
+    return SafeCaster::int32ToBool(value);
+}
+
+template<>
+int8_t SAFE_CONVERT<int32_t, int8_t>(int32_t value)
+{
+    return SafeCaster::int32ToInt8(value);
+}
+
+template<>
+int16_t SAFE_CONVERT<int32_t, int16_t>(int32_t value)
+{
+    return SafeCaster::int32ToInt16(value);
+}
+
+template<>
+int64_t SAFE_CONVERT<int32_t, int64_t>(int32_t value)
+{
+    return SafeCaster::int32ToInt64(value);
+}
+
+template<>
+uint8_t SAFE_CONVERT<int32_t, uint8_t>(int32_t value)
+{
+    return SafeCaster::int32ToUint8(value);
+}
+
+template<>
+uint16_t SAFE_CONVERT<int32_t, uint16_t>(int32_t value)
+{
+    return SafeCaster::int32ToUint16(value);
+}
+
+template<>
+uint32_t SAFE_CONVERT<int32_t, uint32_t>(int32_t value)
+{
+    return SafeCaster::int32ToUint32(value);
+}
+
+template<>
+uint64_t SAFE_CONVERT<int32_t, uint64_t>(int32_t value)
+{
+    return SafeCaster::int32ToUint64(value);
+}
+
+template<>
+float SAFE_CONVERT<int32_t, float>(int32_t value)
+{
+    return SafeCaster::int32ToFloat(value);
+}
+
+template<>
+double SAFE_CONVERT<int32_t, double>(int32_t value)
+{
+    return SafeCaster::int32ToDouble(value);
+}
+
+// int64_t conversions
+template<>
+bool SAFE_CONVERT<int64_t, bool>(int64_t value)
+{
+    return SafeCaster::int64ToBool(value);
+}
+
+template<>
+int8_t SAFE_CONVERT<int64_t, int8_t>(int64_t value)
+{
+    return SafeCaster::int64ToInt8(value);
+}
+
+template<>
+int16_t SAFE_CONVERT<int64_t, int16_t>(int64_t value)
+{
+    return SafeCaster::int64ToInt16(value);
+}
+
+template<>
+int32_t SAFE_CONVERT<int64_t, int32_t>(int64_t value)
+{
+    return SafeCaster::int64ToInt32(value);
+}
+
+template<>
+uint8_t SAFE_CONVERT<int64_t, uint8_t>(int64_t value)
+{
+    return SafeCaster::int64ToUint8(value);
+}
+
+template<>
+uint16_t SAFE_CONVERT<int64_t, uint16_t>(int64_t value)
+{
+    return SafeCaster::int64ToUint16(value);
+}
+
+template<>
+uint32_t SAFE_CONVERT<int64_t, uint32_t>(int64_t value)
+{
+    return SafeCaster::int64ToUint32(value);
+}
+
+template<>
+uint64_t SAFE_CONVERT<int64_t, uint64_t>(int64_t value)
+{
+    return SafeCaster::int64ToUint64(value);
+}
+
+template<>
+float SAFE_CONVERT<int64_t, float>(int64_t value)
+{
+    return SafeCaster::int64ToFloat(value);
+}
+
+template<>
+double SAFE_CONVERT<int64_t, double>(int64_t value)
+{
+    return SafeCaster::int64ToDouble(value);
+}
+
+// uint8_t conversions
+template<>
+bool SAFE_CONVERT<uint8_t, bool>(uint8_t value)
+{
+    return SafeCaster::uint8ToBool(value);
+}
+
+template<>
+int8_t SAFE_CONVERT<uint8_t, int8_t>(uint8_t value)
+{
+    return SafeCaster::uint8ToInt8(value);
+}
+
+template<>
+int16_t SAFE_CONVERT<uint8_t, int16_t>(uint8_t value)
+{
+    return SafeCaster::uint8ToInt16(value);
+}
+
+template<>
+int32_t SAFE_CONVERT<uint8_t, int32_t>(uint8_t value)
+{
+    return SafeCaster::uint8ToInt32(value);
+}
+
+template<>
+int64_t SAFE_CONVERT<uint8_t, int64_t>(uint8_t value)
+{
+    return SafeCaster::uint8ToInt64(value);
+}
+
+template<>
+uint16_t SAFE_CONVERT<uint8_t, uint16_t>(uint8_t value)
+{
+    return SafeCaster::uint8ToUint16(value);
+}
+
+template<>
+uint32_t SAFE_CONVERT<uint8_t, uint32_t>(uint8_t value)
+{
+    return SafeCaster::uint8ToUint32(value);
+}
+
+template<>
+uint64_t SAFE_CONVERT<uint8_t, uint64_t>(uint8_t value)
+{
+    return SafeCaster::uint8ToUint64(value);
+}
+
+template<>
+float SAFE_CONVERT<uint8_t, float>(uint8_t value)
+{
+    return SafeCaster::uint8ToFloat(value);
+}
+
+template<>
+double SAFE_CONVERT<uint8_t, double>(uint8_t value)
+{
+    return SafeCaster::uint8ToDouble(value);
+}
+
+// uint16_t conversions
+template<>
+bool SAFE_CONVERT<uint16_t, bool>(uint16_t value)
+{
+    return SafeCaster::uint16ToBool(value);
+}
+
+template<>
+int8_t SAFE_CONVERT<uint16_t, int8_t>(uint16_t value)
+{
+    return SafeCaster::uint16ToInt8(value);
+}
+
+template<>
+int16_t SAFE_CONVERT<uint16_t, int16_t>(uint16_t value)
+{
+    return SafeCaster::uint16ToInt16(value);
+}
+
+template<>
+int32_t SAFE_CONVERT<uint16_t, int32_t>(uint16_t value)
+{
+    return SafeCaster::uint16ToInt32(value);
+}
+
+template<>
+int64_t SAFE_CONVERT<uint16_t, int64_t>(uint16_t value)
+{
+    return SafeCaster::uint16ToInt64(value);
+}
+
+template<>
+uint8_t SAFE_CONVERT<uint16_t, uint8_t>(uint16_t value)
+{
+    return SafeCaster::uint16ToUint8(value);
+}
+
+template<>
+uint32_t SAFE_CONVERT<uint16_t, uint32_t>(uint16_t value)
+{
+    return SafeCaster::uint16ToUint32(value);
+}
+
+template<>
+uint64_t SAFE_CONVERT<uint16_t, uint64_t>(uint16_t value)
+{
+    return SafeCaster::uint16ToUint64(value);
+}
+
+template<>
+float SAFE_CONVERT<uint16_t, float>(uint16_t value)
+{
+    return SafeCaster::uint16ToFloat(value);
+}
+
+template<>
+double SAFE_CONVERT<uint16_t, double>(uint16_t value)
+{
+    return SafeCaster::uint16ToDouble(value);
+}
+
+// uint32_t conversions
+template<>
+bool SAFE_CONVERT<uint32_t, bool>(uint32_t value)
+{
+    return SafeCaster::uint32ToBool(value);
+}
+
+template<>
+int8_t SAFE_CONVERT<uint32_t, int8_t>(uint32_t value)
+{
+    return SafeCaster::uint32ToInt8(value);
+}
+
+template<>
+int16_t SAFE_CONVERT<uint32_t, int16_t>(uint32_t value)
+{
+    return SafeCaster::uint32ToInt16(value);
+}
+
+template<>
+int32_t SAFE_CONVERT<uint32_t, int32_t>(uint32_t value)
+{
+    return SafeCaster::uint32ToInt32(value);
+}
+
+template<>
+int64_t SAFE_CONVERT<uint32_t, int64_t>(uint32_t value)
+{
+    return SafeCaster::uint32ToInt64(value);
+}
+
+template<>
+uint8_t SAFE_CONVERT<uint32_t, uint8_t>(uint32_t value)
+{
+    return SafeCaster::uint32ToUint8(value);
+}
+
+template<>
+uint16_t SAFE_CONVERT<uint32_t, uint16_t>(uint32_t value)
+{
+    return SafeCaster::uint32ToUint16(value);
+}
+
+template<>
+uint64_t SAFE_CONVERT<uint32_t, uint64_t>(uint32_t value)
+{
+    return SafeCaster::uint32ToUint64(value);
+}
+
+template<>
+float SAFE_CONVERT<uint32_t, float>(uint32_t value)
+{
+    return SafeCaster::uint32ToFloat(value);
+}
+
+template<>
+double SAFE_CONVERT<uint32_t, double>(uint32_t value)
+{
+    return SafeCaster::uint32ToDouble(value);
+}
+
+// uint64_t conversions
+template<>
+bool SAFE_CONVERT<uint64_t, bool>(uint64_t value)
+{
+    return SafeCaster::uint64ToBool(value);
+}
+
+template<>
+int8_t SAFE_CONVERT<uint64_t, int8_t>(uint64_t value)
+{
+    return SafeCaster::uint64ToInt8(value);
+}
+
+template<>
+int16_t SAFE_CONVERT<uint64_t, int16_t>(uint64_t value)
+{
+    return SafeCaster::uint64ToInt16(value);
+}
+
+template<>
+int32_t SAFE_CONVERT<uint64_t, int32_t>(uint64_t value)
+{
+    return SafeCaster::uint64ToInt32(value);
+}
+
+template<>
+int64_t SAFE_CONVERT<uint64_t, int64_t>(uint64_t value)
+{
+    return SafeCaster::uint64ToInt64(value);
+}
+
+template<>
+uint8_t SAFE_CONVERT<uint64_t, uint8_t>(uint64_t value)
+{
+    return SafeCaster::uint64ToUint8(value);
+}
+
+template<>
+uint16_t SAFE_CONVERT<uint64_t, uint16_t>(uint64_t value)
+{
+    return SafeCaster::uint64ToUint16(value);
+}
+
+template<>
+uint32_t SAFE_CONVERT<uint64_t, uint32_t>(uint64_t value)
+{
+    return SafeCaster::uint64ToUint32(value);
+}
+
+template<>
+float SAFE_CONVERT<uint64_t, float>(uint64_t value)
+{
+    return SafeCaster::uint64ToFloat(value);
+}
+
+template<>
+double SAFE_CONVERT<uint64_t, double>(uint64_t value)
+{
+    return SafeCaster::uint64ToDouble(value);
+}
+
+// float conversions
+template<>
+bool SAFE_CONVERT<float, bool>(float value)
+{
+    return SafeCaster::floatToBool(value);
+}
+
+template<>
+int8_t SAFE_CONVERT<float, int8_t>(float value)
+{
+    return SafeCaster::floatToInt8(value);
+}
+
+template<>
+int16_t SAFE_CONVERT<float, int16_t>(float value)
+{
+    return SafeCaster::floatToInt16(value);
+}
+
+template<>
+int32_t SAFE_CONVERT<float, int32_t>(float value)
+{
+    return SafeCaster::floatToInt32(value);
+}
+
+template<>
+int64_t SAFE_CONVERT<float, int64_t>(float value)
+{
+    return SafeCaster::floatToInt64(value);
+}
+
+template<>
+uint8_t SAFE_CONVERT<float, uint8_t>(float value)
+{
+    return SafeCaster::floatToUint8(value);
+}
+
+template<>
+uint16_t SAFE_CONVERT<float, uint16_t>(float value)
+{
+    return SafeCaster::floatToUint16(value);
+}
+
+template<>
+uint32_t SAFE_CONVERT<float, uint32_t>(float value)
+{
+    return SafeCaster::floatToUint32(value);
+}
+
+template<>
+uint64_t SAFE_CONVERT<float, uint64_t>(float value)
+{
+    return SafeCaster::floatToUint64(value);
+}
+
+template<>
+double SAFE_CONVERT<float, double>(float value)
+{
+    return SafeCaster::floatToDouble(value);
+}
+
+// double conversions
+template<>
+bool SAFE_CONVERT<double, bool>(double value)
+{
+    return SafeCaster::doubleToBool(value);
+}
+
+template<>
+int8_t SAFE_CONVERT<double, int8_t>(double value)
+{
+    return SafeCaster::doubleToInt8(value);
+}
+
+template<>
+int16_t SAFE_CONVERT<double, int16_t>(double value)
+{
+    return SafeCaster::doubleToInt16(value);
+}
+
+template<>
+int32_t SAFE_CONVERT<double, int32_t>(double value)
+{
+    return SafeCaster::doubleToInt32(value);
+}
+
+template<>
+int64_t SAFE_CONVERT<double, int64_t>(double value)
+{
+    return SafeCaster::doubleToInt64(value);
+}
+
+template<>
+uint8_t SAFE_CONVERT<double, uint8_t>(double value)
+{
+    return SafeCaster::doubleToUint8(value);
+}
+
+template<>
+uint16_t SAFE_CONVERT<double, uint16_t>(double value)
+{
+    return SafeCaster::doubleToUint16(value);
+}
+
+template<>
+uint32_t SAFE_CONVERT<double, uint32_t>(double value)
+{
+    return SafeCaster::doubleToUint32(value);
+}
+
+template<>
+uint64_t SAFE_CONVERT<double, uint64_t>(double value)
+{
+    return SafeCaster::doubleToUint64(value);
+}
+
+template<>
+float SAFE_CONVERT<double, float>(double value)
+{
+    return SafeCaster::doubleToFloat(value);
+}
